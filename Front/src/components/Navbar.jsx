@@ -9,22 +9,8 @@ const Navbar = () => {
   const [error, setError] = useState('');
   const [inputValue, setInputValue] = useState('');
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
 
-        {/**o caminho tem que ser modificado! */}
-        const response = await axios.get('http://localhost:8080/home');
-        setProducts(response.data);
-        setLoading(false);
-      } catch (error) {
-        setError('Erro ao carregar os produtos.');
-        setLoading(false);
-      }
-    };
 
-    fetchProducts();
-  }, []);
 
   useEffect(() => {
     if (products.length > 0) {
@@ -79,8 +65,7 @@ const Navbar = () => {
             </select>
             <input
               type="text"
-              value={inputValue}
-              onChange={handleInputChange}
+        
               className="border-l border-gray-400 font-semibold text-sm pl-4"
               placeholder="Pesquisar"
             />

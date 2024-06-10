@@ -2,16 +2,23 @@
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
+import Navbar from "./components/Navbar";
 
-  export default function App() {
-    return (
-      <Routes>
+export default function App() {
+  return (
+    <BrowserRouter>
 
-        <Route path="/" element={<Home />} />
-        <Route path= "/login" element={<Login/>}/>
-      
-     
-      </Routes>
+        <Navbar/>
+        <Routes>
 
-    )
-  }
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+         
+
+
+
+        </Routes>
+    </BrowserRouter>
+
+  )
+}

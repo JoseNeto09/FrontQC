@@ -28,11 +28,9 @@ const Login = () => {
       const response = await api.post('/auth/signin', { username, password });
       api.defaults.headers.Authorization = `Bearer ${response.data.accessToken}`;
       
-      const test = await api.post('/dataclient/register', { username, password });
-      console.log(test);
       if (response.status === 200) {
         toast.success("Login realizado com sucesso!");
-        //navigate('/');
+        navigate('/perfil');
       }  else {
         toast.error('Ocorreu um erro inesperado!');
         
@@ -45,7 +43,6 @@ const Login = () => {
           toast.error(error.message);
         });
       }else{
-        console.log(e.response.data.message);
         toast.error(e.response.data.message);
       }
     }

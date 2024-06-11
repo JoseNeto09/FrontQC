@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import CadastroUser from "./pages/CadastroUser/CadastroUsuario";
 import ValidarUsuario from "./pages/CadastroUser/ValidarUsuario";
 
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -19,11 +20,7 @@ export default function App() {
           <Route path="/validar-email" element={<ValidarUsuario/>} />
           
           
-
-
-
         </Routes>
     </BrowserRouter>
-
   )
 }

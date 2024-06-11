@@ -16,7 +16,6 @@ const ProdutosGrid = () => {
           <div className="flex flex-col justify-center">
             <a href="" className="font-bold text-2xl lg:ml-2">Produto A</a>
             <a href="" className="text-lg lg:ml-2">R$ 00,00</a>
-            <a href="" className="font-bold text-xl lg:ml-2">R$ 00,00</a>
             <a href="" className="text-green-600 lg:ml-2">em 12x R$ 000,00 sem juros</a>
           </div>
         </div>
@@ -31,7 +30,6 @@ const ProdutosGrid = () => {
           <div className="flex flex-col justify-center">
             <a href="" className="font-bold text-2xl lg:ml-2">Produto B</a>
             <a href="" className="text-lg lg:ml-2">R$ 00,00</a>
-            <a href="" className="font-bold text-xl lg:ml-2">R$ 00,00</a>
             <a href="" className="text-green-600 lg:ml-2">em 12x R$ 000,00 sem juros</a>
           </div>
         </div>
@@ -46,7 +44,6 @@ const ProdutosGrid = () => {
           <div className="flex flex-col justify-center">
             <a href="" className="font-bold text-2xl lg:ml-2">Produto C</a>
             <a href="" className="text-lg lg:ml-2">R$ 00,00</a>
-            <a href="" className="font-bold text-xl lg:ml-2">R$ 00,00</a>
             <a href="" className="text-green-600 lg:ml-2">em 12x R$ 000,00 sem juros</a>
           </div>
         </div>
@@ -62,7 +59,6 @@ const ProdutosGrid = () => {
           <div className="flex flex-col justify-center">
             <a href="" className="font-bold text-2xl lg:ml-2">Produto D</a>
             <a href="" className="text-lg lg:ml-2">R$ 00,00</a>
-            <a href="" className="font-bold text-xl lg:ml-2">R$ 00,00</a>
             <a href="" className="text-green-600 lg:ml-2">em 12x R$ 000,00 sem juros</a>
           </div>
         </div>
@@ -77,7 +73,6 @@ const ProdutosGrid = () => {
           <div className="flex flex-col justify-center">
             <a href="" className="font-bold text-2xl lg:ml-2">Produto E</a>
             <a href="" className="text-lg lg:ml-2">R$ 00,00</a>
-            <a href="" className="font-bold text-xl lg:ml-2">R$ 00,00</a>
             <a href="" className="text-green-600 lg:ml-2">em 12x R$ 000,00 sem juros</a>
           </div>
         </div>
@@ -92,7 +87,6 @@ const ProdutosGrid = () => {
           <div className="flex flex-col justify-center">
             <a href="" className="font-bold text-2xl lg:ml-2">Produto F</a>
             <a href="" className="text-lg lg:ml-2">R$ 00,00</a>
-            <a href="" className="font-bold text-xl lg:ml-2">R$ 00,00</a>
             <a href="" className="text-green-600 lg:ml-2">em 12x R$ 000,00 sem juros</a>
           </div>
         </div>

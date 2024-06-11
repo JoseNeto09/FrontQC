@@ -1,13 +1,15 @@
 import { useState } from "react";
 import Logo from "../../assets/LogoOficialQC_Vermelha.png";
-import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from "react-router-dom";
+import {  useNavigate, Link } from "react-router-dom";
 import { z } from "zod";
+import { useSelector, useDispatch } from "react-redux";
+import api from "../../services/Api";
 const CadastroUser = () => {
-
-  const [name, setName] = useState('');
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -20,8 +22,8 @@ const CadastroUser = () => {
   };
 
   const userSchema = z.object({
-    name: z.string().min(1, "Nome é obrigatório"),
     email: z.string().email("Email inválido"),
+    username: z.string().min(1, "Nome é obrigatório"),
     password: z.string().min(6, "Senha deve ter no mínimo 6 caracteres"),
     confirmPassword: z.string().min(6, "Senha de confirmação deve ter no mínimo 6 caracteres"),
   }).refine(data => data.password === data.confirmPassword, {
@@ -32,37 +34,41 @@ const CadastroUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = {
-      name,
+      username,
       email,
       password,
       confirmPassword
 
     };
     try {
-      toast.error("test");
       userSchema.parse(user);
       setError('');
 
-      
-      const response = await axios.post('/api/register', { name, email, password });
-      setResponseStatus(response.status);
-      toast.success("Cadastro realizado com sucesso!");
+      const response = await api.post('/auth/signup', { username, email, password });
+      console.log(response.status);
+      toast.success("Sucess");
+      if (response.status === 201) {
+        toast.success("Cadastro realizado com sucesso!");
+        navigate('/validar-email');
+      } else {
+        navigate('/register')
+      }
       console.log("Dados enviados com sucesso:", user);
     } catch (e) {
       if (e instanceof z.ZodError) {
-        const errorMessage = e.errors.map(error => error.message).join(', ');
-        toast.error(` ${errorMessage}`);
+        e.errors.forEach(error => {
+          toast.error(error.message);
+        });
       } else {
         toast.error("Ocorreu um erro inesperado");
       }
       console.error("Erro de validação:", e.errors);
     }
-    console.log(user);
 
   }
   return (
     <section className="bg-slate-50 dark:bg-slate-50">
-      <ToastContainer />
+    
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
           <a href="#" className="flex items-center justify-center mb-6 text-2xl font-semibold text-white dark:text-white">
@@ -90,8 +96,8 @@ const CadastroUser = () => {
             <input type="text"
               name="username"
               id="username"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               autoComplete="username"
               className="flex w-full h-10 mx-auto text-xl mb-4 p-2.5 border rounded-md"
               placeholder="Fulano de tal"
